@@ -1,34 +1,36 @@
-<!DOCTYPE html>  
-<html>  
-<body>  
+<html>
+  <head>
+  <link rel="stylesheet" href="style2.css">
+    <title>Q2 array</title>
+  </head>
+  <body>
+    <div class="circle">34</div>
+    <div class="circle">4</div>
+    <div class="circle">5</div>
+    <div class="circle">-23</div>
+    <div class="circle">45</div>
+    <div class="circle">100</div>
 
-    <style>
-      class {
-        border-radius: 50%;
-        width: 15px;
-        height: 15px;
-        padding: 10px;
-        margin:15px;
-        border: 2px solid #000;
-        text-align: center;
-        display: inline-block;
-        
-      }
 
-    </style>
+    <?php
+    $numbers = array("34", "4", "5", "-23", "45", "100");
+    $quantity = count($numbers);
+    for ($x = 0; $x < $quantity; $x++) {
 
-  <!--original element in sequence-->
-  
+        echo "<div class='col-lg-1 col-2 text-center border border-radius my-2 rounded-circle border-dark p-4 p-lg-5'>";
+        echo $numbers[$x];
+        echo "</div>";
+    }
 
-<?php
-$num = array("<class>34</div>","<class>4</div>","<class>5</div>","<class>-23</div>","<class>100</div>");
-echo $num[0]. $num[1]. $num[2]. $num[3]. $num[4];
-?>
+    $numbers[0] = "100";
+    $numbers[5] = "34";
 
-  <!--swap first and last element-->
-<?php
-echo $num[4]. $num[1]. $num[2]. $num[3]. $num[0];
-?>
+    for ($x = 0; $x < $quantity; $x++) {
 
-</body>  
-</html>   
+        echo "<div class='col-lg-1 col-2 text-center border border-radius my-2 rounded-circle border-dark p-4 p-lg-5'>";
+        echo $numbers[$x];
+        echo "</div>";
+    }
+    ?>
+  </body>
+</html>
