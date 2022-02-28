@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="style.css">
+<title>Q2 date</title>
 <body>
-    <!---->
-<div class="col-sm-12 col-xl-4">....
+    <!--1st calendar-->
+    <div class="col-sm-12 col-xl-4">
 
 
 
+    </div>
 
-</div>
+    <?php
+    $date = date("<text>d</text>/M/Y");
+    echo $date;
+    ?>
 
-<?php
-echo date ("d.m.Y");
-?>
 
+    <!--2st calendar-->
+
+    <?php
+    $date = date("d/M/Y");
+    echo $date;
+    ?>
+    <!--3st calendar-->
+
+    <?php
+    $date = date("d/F/Y");
+    echo $date;
+    ?>
 </body>
+
 </html>
