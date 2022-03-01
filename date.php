@@ -29,12 +29,12 @@
 
         <!--2st calendar-->
         <div id="date1" class="container col-7 col-lg-3 text-center">
-            <div class=" container.col-12 col-xl-4 h1 border ">
+            <div class=" container.col-12 col-xl-4 h1 border border-dark">
                 <?php
                 echo date("d");
                 ?>
                 <br>
-                <div class="h6 text-uppercase border p-1 px-3 d-inline ">
+                <div class="h6 text-uppercase border bg-dark text-white p-1 px-3 d-inline ">
                     <?php
                     echo date("M Y");
                     ?>
@@ -58,10 +58,11 @@
                         ?>
                     </div>
                 </sup>
+            
             </div>
 
         </div>
-        </div>
+    </div>
 </body>
 
 </html>
