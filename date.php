@@ -37,7 +37,7 @@
                 echo date("d");
                 ?>
 
-                <div class="h6 text-uppercase border bg-dark text-white p-1 mb-0">
+                <div class="h6 text-uppercase border d-flex bg-dark text-white p-1 mb-0">
                     <?php
                     echo date("M Y");
                     ?>
