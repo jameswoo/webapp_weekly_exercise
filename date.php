@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <title>Q2 date</title>
 
 <body>
@@ -30,23 +31,23 @@
 
 
         <!--2st calendar-->
-        <div id="date2" class="container col-7 col-lg-3">
-            <div class="h1 border border-dark text-center py-2 px-0 mx-5">
+        <div id="date2" class="container col-7 col-xl-3 d-flex align-items-start flex-column ">
+            <div class="h1 border border-dark text-center pt-2 mb-0">
                 <?php
                 echo date("d");
                 ?>
-            </div>
-            <div class="h6 text-uppercase border bg-dark text-white p-1 px-5 d-inline ">
-                <?php
-                echo date("M Y");
-                ?>
-            </div>
 
+                <div class="h6 text-uppercase border bg-dark text-white p-1 mb-0">
+                    <?php
+                    echo date("M Y");
+                    ?>
+                </div>
+            </div>
 
         </div>
 
         <!--3rd calendar-->
-        <div id="date3" class="container-lg col-7 col-lg-3 text-center">
+        <div id="date3" class="container-lg col-7 col-xl-3 text-center d-flex align-items-start">
             <div class="h1 text-uppercase text-center py-3 d-cen">
                 <?php
                 echo "<strong>";
@@ -60,7 +61,7 @@
                         ?>
                     </div>
 
-                    <div class="h6">
+                    <div class="h6 ps-5">
                         <p class="text-break">
 
                             <?php
