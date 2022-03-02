@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-7 col-xl-3">
             <div id="date1 flex-sm-row" class="container text-center">
-                <div class=" container.col-12 col-xl-4 h1">
+                <div class=" container col-12 col-xl-4 h1">
                     <?php
                     echo date("d");
                     ?>
