@@ -47,7 +47,7 @@
         </div>
 
         <!--3rd calendar-->
-        <div id="date3" class="container-lg col-7 col-xl-3 text-center d-flex align-items-start">
+        <div id="date3" class="container col-7 col-xl-3 text-center d-flex align-items-start">
             <div class="h1 text-uppercase text-center py-3 d-cen">
                 <?php
                 echo "<strong>";
