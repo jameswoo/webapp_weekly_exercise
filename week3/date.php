@@ -36,12 +36,12 @@
             <div class="col ">
                 <div class="col-12 col-md-8 col-lg-4">
                     <div class="border border-dark border-2 border-bottom-0">
-                            <div class="display-2">
-                                <?php
-                                echo "<strong>";
-                                echo date("d");
-                                echo "</strong>";
-                                ?>
+                        <div class="display-2">
+                            <?php
+                            echo "<strong>";
+                            echo date("d");
+                            echo "</strong>";
+                            ?>
                         </div>
                     </div>
                     <div class="h6 text-uppercase border bg-dark text-white p-1">
@@ -54,7 +54,7 @@
 
             <!--3rd calendar-->
             <div class="col">
-                <div class="col-12 col-md-8 col-lg-4">
+                <div class="col-12 col-md-8 col-lg-4 d-flex">
                     <div class="display-2">
                         <?php
                         echo "<strong>";
@@ -62,23 +62,16 @@
                         echo "</strong>";
                         ?>
                     </div>
-                    <sup>
-                        <div class="h6 text-uppercase d-inline ">
-                            <?php
-                            echo date("M");
-                            ?>
-                        </div>
 
-                        <div class="h6 ps-5">
-                            <p class="text-break">
-
-                                <?php
-                                echo date("Y");
-                                ?>
-
-                            </p>
-                        </div>
-                    </sup>
+                    <div class="h6 text-uppercase pt-3">
+                        <?php
+                        echo "<strong>";
+                        echo date("M");
+                        echo "<br>";
+                        echo date("Y");
+                        echo "</strong>";
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
