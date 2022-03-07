@@ -17,7 +17,7 @@
     }
     
     echo "Perimeter of circle =";
-    echo findCirclePerimeter("2", "3.14");
+    echo findCirclePerimeter("$radius", "$pi");
 
     ?>
 </body>

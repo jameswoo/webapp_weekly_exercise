@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>findCirclePerimeter</title>
+    <title>formCalculate</title>
 </head>
 
 <body>
@@ -10,9 +10,14 @@
     <?php
     $radius = $_POST['radius'];
     $pi = 3.14;
-    $area = $pi * $radius * $radius;
-    $perimeter = 2 * $pi * $radius;
-    echo "Area of circle = $area";
+
+    function findCircleArea($radius, $pi)
+    {
+        echo $pi * $radius * $radius;
+    }
+
+    echo "Area of circle =";
+    echo findCircleArea("$radius", "$pi");
     ?>
 
 

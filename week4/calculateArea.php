@@ -17,7 +17,7 @@
     }
     
     echo "Area of circle =";
-    echo findCircleArea("2", "3.14");
+    echo findCircleArea("$radius", "$pi");
 
     ?>
 </body>

@@ -10,17 +10,38 @@
     <?php
     $radius = $_POST['radius'];
     $pi = 3.14;
-    $area = $pi * $radius * $radius;
-    $perimeter = 2 * $pi * $radius;
 
-        if (is_numeric($number)) {
+    function findCircleArea($radius, $pi)
+    {
+        echo $pi * $radius * $radius;
+    }
 
-            echo "Area of circle = $area";
-            echo "<br>";
-            echo "Perimeter of circle = $perimeter";
-        } else {
-            echo 'Error: Please enter only numbers.Thank you';
-        }
+    if (is_numeric($radius)) {
+
+        echo "Area of circle =";
+        echo findCircleArea("$radius", "$pi");
+        echo "<br>";
+    } else {
+        echo 'Error: Please enter only numbers.Thank you';
+    }
+    ?>
+
+    <?php
+    $radius = $_POST['radius'];
+    $pi = 3.14;
+
+    function findCirclePerimeter($radius, $pi)
+    {
+        echo 2 * $pi * $radius;
+    }
+
+
+    if (is_numeric($radius)) {
+        echo "Perimeter of circle =";
+        echo findCirclePerimeter("$radius", "$pi");
+    } else {
+        echo '';
+    }
     ?>
 
 </body>
