@@ -13,7 +13,6 @@
     $area = $pi * $radius * $radius;
     $perimeter = 2 * $pi * $radius;
 
-    if (isset($form_result)) {
         if (is_numeric($number)) {
 
             echo "Area of circle = $area";
@@ -22,7 +21,6 @@
         } else {
             echo 'Error: Please enter only numbers.Thank you';
         }
-    }
     ?>
 
 </body>

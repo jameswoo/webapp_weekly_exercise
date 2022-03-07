@@ -11,9 +11,14 @@
     <?php
     $radius = 2;
     $pi = 3.14;
-    $area = $pi * $radius * $radius;
-    $perimeter = 2 * $pi * $radius;
-    echo "Area of circle = $area";
+
+    function findCircleArea ($radius, $pi){
+        echo $pi * $radius * $radius;
+    }
+    
+    echo "Area of circle =";
+    echo findCircleArea("2", "3.14");
+
     ?>
 </body>
 
