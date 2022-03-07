@@ -7,40 +7,21 @@
 
 <body>
 
-    <?php
-    $radius = $_POST['radius'];
-    $pi = 3.14;
-
-    function findCircleArea($radius, $pi)
-    {
-        echo $pi * $radius * $radius;
-    }
-
-    if (is_numeric($radius)) {
-
-        echo "Area of circle =";
-        echo findCircleArea("$radius", "$pi");
-        echo "<br>";
-    } else {
-        echo 'Error: Please enter only numbers.Thank you';
-    }
-    ?>
+    <form action="formValidateresult.php <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+        Radius: <input type="text" name="radius"><br>
+        <input type="submit" name="submit" value="Submit">
+    </form>
 
     <?php
-    $radius = $_POST['radius'];
-    $pi = 3.14;
-
-    function findCirclePerimeter($radius, $pi)
-    {
-        echo 2 * $pi * $radius;
-    }
-
-
-    if (is_numeric($radius)) {
-        echo "Perimeter of circle =";
-        echo findCirclePerimeter("$radius", "$pi");
-    } else {
-        echo '';
+    $radius = "";
+    $radiusErr = "";
+//
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ((empty($_POST['radius'])) or (!is_numeric($radius))) {
+            $radiusErr = "Please enter only number";
+        }
+        
+        
     }
     ?>
 
