@@ -14,7 +14,7 @@
     $perimeter = 2 * $pi * $radius;
 
     if (isset($form_result)) {
-        if (is_numeric($radius)) {
+        if (is_numeric($number)) {
 
             echo "Area of circle = $area";
             echo "<br>";
