@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head><title>findCirclePerimeter</title></head>
+
+<head>
+    <title>findCirclePerimeter</title>
+</head>
 
 <body>
-    
+
 
     <?php
-    $radius=2;
+    $radius = 2;
     $pi = 3.14;
-    $area1= $pi * $radius * $radius;
-    $area2=2*$pi*$radius;
-    echo "Perimeter of circle = $area2";
-?>
+    $area = $pi * $radius * $radius;
+    $perimeter = 2 * $pi * $radius;
+    echo "Perimeter of circle = $perimeter";
+    ?>
 </body>
 
 </html>
