@@ -1,3 +1,9 @@
+<?php
+function findCircleArea($radius)
+{
+    echo 3.14 * (int)$radius * (int)$radius;
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -6,28 +12,20 @@
 </head>
 
 <body>
+    <div class="row justify-content-center">
+        <form action="formCalculate.php" method="post">
 
-<form action="formCalculate.php" method="post">
-        Radius: <input type="text" name="radius"><br>
-        <input type="submit">
-    </form>
-    
+            Radius: <input type="text" name="radius"><br>
+            <input type="submit">
+        </form>
+    </div>
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $radius = $_POST['radius'];
-        $pi = 3.14;
 
         echo "Area of circle =";
-        echo findCircleArea($radius, $pi);
-    }else {
-        echo "please input radius";
+        echo findCircleArea($radius);
     }
-    function findCircleArea($radius, $pi)
-    {
-        echo $pi * $radius * $radius;
-    }
-
-
 
     ?>
 

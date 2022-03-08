@@ -12,21 +12,26 @@
 
 <body>
 
-    <div class="p-3 m-5 bg-info text-white text-center ">
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-8 col-lg-4 mt-5">
+            <div class="shadow-lg p-3 mb-5 bg-white rounded text-secondary">
+                <div class="text-align-center">
 
-        <?php
-        $radius = 2;
+                    <?php
+                    $radius = 2;
 
-        function findCircleArea($radius)
-        {
-            echo 3.14 * $radius * $radius;
-        }
-        echo "Area of circle =";
-        echo findCircleArea($radius);
+                    function findCircleArea($radius)
+                    {
+                        echo 3.14 * $radius * $radius;
+                    }
+                    echo "Area of circle = ";
+                    echo findCircleArea($radius);
 
-        ?>
+                    ?>
+                </div>
+            </div>
+        </div>
     </div>
-
 </body>
 
 </html>
