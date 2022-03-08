@@ -1,3 +1,10 @@
+<?php 
+function findCirclePerimeter($radius)
+                {
+                    echo 2 * 3.14 * $radius;
+                }
+                ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -12,21 +19,22 @@
 
 <body>
 
-    <div class="p-3 m-5 bg-info text-white text-center ">
-        <?php
-        $radius = 2;
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-8 col-lg-4 mt-5">
+            <div class="shadow-lg p-3 mb-5 bg-white rounded text-secondary">
+                <?php
+                $radius = 2;
 
-        function findCirclePerimeter($radius)
-        {
-            echo 2 * 3.14 * $radius;
-        }
+                echo "<center>";
+                echo "Perimeter of circle =";
+                echo findCirclePerimeter($radius);
+                echo "</center>";
 
-        echo "Perimeter of circle =";
-        echo findCirclePerimeter($radius);
-
-        ?>
+                ?>
+            </div>
+        </div>
     </div>
-    
+
 </body>
 
 </html>
