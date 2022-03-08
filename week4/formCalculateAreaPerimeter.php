@@ -24,27 +24,37 @@ function findCirclePerimeter($radius)
 
 <body>
     <div class="row justify-content-center">
-    <div class="col-sm-12 col-md-8 col-lg-4 mt-5">
-        <form action="formCalculateAreaPerimeter.php" method="post">
-        <div class="form-group row">
-            Radius: <input type="text" name="radius" class="form-control">
-            <input type="submit" class="btn btn-info btn-rounded mx-5">
-            </div>
-        </form>
-    </div>
-    </div>
-    <div class="p-3 m-5 text-dark text-center">
-        <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $radius = $_POST['radius'];
+        <div class="col-sm-12 col-md-8 col-lg-4 mt-5">
+            <div class="shadow-lg p-3 mb-5 bg-white rounded text-secondary">
+                <form action="formCalculateAreaPerimeter.php" method="post">
 
-            echo "Area of circle =";
-            echo findCircleArea($radius);
-            echo "<br>";
-            echo "Perimeter of circle =";
-            echo findCirclePerimeter($radius);
-        }
-        ?>
+                    <div class="form-group text-dark">
+                        <label>Radius</label>
+                        <input type="text" class="form-control" name="radius" placeholder="please give a number">
+                    </div>
+                    <div class="col text-center my-4">
+
+                        <button type="submit" class="btn btn-info text-white">Submit</button>
+                    </div>
+                </form>
+                
+                <div class="text-dark">
+                    <?php
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        $radius = $_POST['radius'];
+
+                        echo "<center>";
+                        echo "Area of circle = ";
+                        echo findCircleArea($radius);
+                        echo "<br>";
+                        echo "Perimeter of circle = ";
+                        echo findCirclePerimeter($radius);
+                        echo "</center>";
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
