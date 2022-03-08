@@ -28,7 +28,7 @@ function findCircleArea($radius)
                         <label>Radius</label>
                         <input type="text" class="form-control" name="radius" placeholder="please give a number">
                     </div>
-                    <div class="col text-center my-4">
+                    <div class="text-center my-4">
 
                         <button type="submit" class="btn btn-info text-white">Submit</button>
                     </div>
