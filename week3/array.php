@@ -20,9 +20,10 @@
             ?>
                 <div class="col">
                     <div class="row justify-content-center">
-                        <div class="col-4 numberCircle">
-                            <p class="fs-5">
+                        <div class="col-4 numberCircle border border-5 border-primary">
+                            <p class="fs-5 text-primary">
                                 <?php
+                                
                                 echo $numbers[$i];
                                 ?>
                             </p>
@@ -49,8 +50,8 @@
         ?>
             <div class="col">
                 <div class="row justify-content-center">
-                    <div class="col-4 numberCircle">
-                        <p class="fs-5">
+                    <div class="col-4 numberCircle border border-5 border-success">
+                        <p class="fs-5 text-success">
                             <?php
                             echo $numbers[$i];
                             ?>
