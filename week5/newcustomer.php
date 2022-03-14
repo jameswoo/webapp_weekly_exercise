@@ -22,22 +22,38 @@
             // include database connection
             include 'week5/connection.php';
             // posted values
-            $name = $_POST['name'];
-            $description = $_POST['description'];
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $confirmpassword = $_POST['confirmpassword'];
+            $email = $_POST['email'];
+            $firstname = $_POST['firstname'];
             $price = $_POST['price'];
+            $dateofbirth = $_POST['dateofbirth'];
+            $gender = $_POST['gender'];
+
             try {
                 // insert query
                 $query = "INSERT INTO products SET 
-                name=:name, 
-                description=:description, 
-                price=:price,
+                username=:username, 
+                password=:password, 
+                confirmpassword=:confirmpassword,
+                email=:email,
+                firstname=:firstname,
+                lastname=:lastname,
+                dateof birth=:dateofbirth,
+                gender=:gender,
                 created=:created";
                 // prepare query for execution
                 $stmt = $con->prepare($query);
                 // bind the parameters
-                $stmt->bindParam(':name', $name);
-                $stmt->bindParam(':description', $description);
-                $stmt->bindParam(':price', $price);
+                $stmt->bindParam(':username', $username);
+                $stmt->bindParam(':password', $password);
+                $stmt->bindParam(':confirmpassword', $confirmpassword);
+                $stmt->bindParam(':email', $email);
+                $stmt->bindParam(':firstname', $firstname);
+                $stmt->bindParam(':lastname', $lastname);
+                $stmt->bindParam(':dateofbirth', $dateofbirth);
+                $stmt->bindParam(':gender', $gender);
                 // specify when this record was inserted to the database
                 date_default_timezone_set("Asia/Kuala_Lumpur");
                 $created = date('Y-m-d H:i:s');
@@ -58,16 +74,36 @@
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <table class='table table-hover table-responsive table-bordered'>
                 <tr>
-                    <td>Name</td>
-                    <td><input type='text' name='name' class='form-control' /></td>
+                    <td>Username</td>
+                    <td><input type='text' name='username' class='form-control' /></td>
                 </tr>
                 <tr>
-                    <td>Description</td>
-                    <td><textarea name='description' class='form-control'></textarea></td>
+                    <td>Password</td>
+                    <td><textarea name='password' class='form-control'></textarea></td>
                 </tr>
                 <tr>
-                    <td>Price</td>
-                    <td><input type='text' name='price' class='form-control' /></td>
+                    <td>Confirm Password</td>
+                    <td><input type='text' name='confirm password' class='form-control' /></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type='text' name='email' class='form-control' /></td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td><input type='text' name='first name' class='form-control' /></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><input type='text' name='last name' class='form-control' /></td>
+                </tr>
+                <tr>
+                    <td>Date of Birth</td>
+                    <td><input type='text' name='date of birth' class='form-control' /></td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td><input type='text' name='gender' class='form-control' /></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -79,7 +115,25 @@
             </table>
         </form>
 
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+            $username = $_POST['username'];
+
+            if (empty($username)) {
+                echo '<span style="color:#FF0000;"> please enter username</span>';
+            } elseif (preg_match("/[ ]/", $Password)==1) {
+                echo '<span style="color:#FF0000;">no spacing please!</span>';
+            } elseif (strlen($username) < 6) {
+                echo '<span style="color:#FF0000;">please only enter 6 characters!</span>';
+            } elseif (strlen($username) < 6) {
+                echo '<span style="color:#FF0000;">username must be unique!</span>';
+            }else {
+                echo $stmt->execute();
+            }
+        }
+
+        ?>
 
     </div>
     <!-- end .container -->
