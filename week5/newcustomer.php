@@ -4,11 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <title>PDO - Create a Record - PHP CRUD Tutorial</title>
     <!-- Latest compiled and minified Bootstrap CSS (Apply your Bootstrap here -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -24,16 +23,10 @@
             // posted values
             $username = $_POST['username'];
             $password = $_POST['password'];
-
-            $number = preg_match('@[0-9]@', $password);
-            $uppercase = preg_match('@[A-Z]@', $password);
-            $lowercase = preg_match('@[a-z]@', $password);
-            $specialChars = preg_match('@[^\w]@', $password);
-
             $confirmpassword = $_POST['confirmpassword'];
             $email = $_POST['email'];
             $firstname = $_POST['firstname'];
-            $price = $_POST['price'];
+            $price = $_POST['lastname'];
             $dateofbirth = $_POST['dateofbirth'];
             $gender = $_POST['gender'];
 
@@ -46,7 +39,7 @@
                 email=:email,
                 firstname=:firstname,
                 lastname=:lastname,
-                dateof birth=:dateofbirth,
+                dateofbirth=:dateofbirth,
                 gender=:gender,
                 created=:created";
                 // prepare query for execution
@@ -89,7 +82,7 @@
                 </tr>
                 <tr>
                     <td>Confirm Password</td>
-                    <td><input type='password' name='confirm password' class='form-control' /></td>
+                    <td><input type='password' name='confirmpassword' class='form-control' /></td>
                 </tr>
                 <tr>
                     <td>Email</td>
@@ -97,15 +90,25 @@
                 </tr>
                 <tr>
                     <td>First Name</td>
-                    <td><input type='text' name='first name' class='form-control' /></td>
+                    <td><input type='text' name='firstname' class='form-control' /></td>
                 </tr>
                 <tr>
                     <td>Last Name</td>
-                    <td><input type='text' name='last name' class='form-control' /></td>
+                    <td><input type='text' name='lastname' class='form-control' /></td>
                 </tr>
                 <tr>
                     <td>Date of Birth</td>
-                    <td><input type='button' name='date of birth' class='form-control' /></td>
+                    <td><select name="dateofbirth" class="form-control"></td>
+                   
+                    <select name="month">
+                        <option selected>Month</option>
+                        <option>
+                        <?php
+                        for ($month = 1; $month <= 12; $month++)
+                            echo "<option value = '" . $month . "'>" . $month . "</option>";
+                        ?>
+                        </option>
+                    </select>
                 </tr>
                 <tr>
                     <td>Gender</td>
@@ -136,7 +139,8 @@
 
             if (empty($username)) {
                 echo '<span style="color:#FF0000;"> please enter username</span>';
-            } elseif (preg_match("/[ ]/", $Password) == 1) {
+                
+            } elseif (strrpos($_POST["username"], ' ') ) {
                 echo '<span style="color:#FF0000;">no spacing please!</span>';
             } elseif (strlen($username) < 6) {
                 echo '<span style="color:#FF0000;">please only enter 6 characters!</span>';
@@ -155,6 +159,11 @@
 
             $password = $_POST['password'];
             $confirmpassword = $_POST['confirmpassword'];
+            $number = preg_match('@[0-9]@', $password);
+            $uppercase = preg_match('@[A-Z]@', $password);
+            $lowercase = preg_match('@[a-z]@', $password);
+            $specialChars = preg_match('@[^\w]@', $password);
+
             if (strlen($password) && strlen($confirmpassword) < 6 || !$number || !$uppercase || !$lowercase || !$specialChars) {
                 echo "Password must be at least 6 characters in length and must contain at least one number, one upper case letter, one lower case letter and one special character.";
             } else {
