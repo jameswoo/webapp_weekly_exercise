@@ -20,7 +20,7 @@
         <?php
         if ($_POST) {
             // include database connection
-            include 'week5/connection.php';
+            include 'database/connection.php';
             // posted values
             $username = $_POST['username'];
             $password = $_POST['password'];
@@ -158,12 +158,12 @@
             if (strlen($password) && strlen($confirmpassword) < 6 || !$number || !$uppercase || !$lowercase || !$specialChars) {
                 echo "Password must be at least 6 characters in length and must contain at least one number, one upper case letter, one lower case letter and one special character.";
             } else {
-                echo "Your password is strong.";
+                echo $stmt->execute();
             }
         }
         ?>
         <!-- date of birth validation -->
-        
+
     </div>
 
     <!-- end .container -->
