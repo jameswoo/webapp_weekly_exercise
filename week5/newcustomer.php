@@ -27,8 +27,10 @@
             $email = $_POST['email'];
             $firstname = $_POST['firstname'];
             $price = $_POST['lastname'];
-            $dateofbirth = $_POST['dateofbirth'];
+            $dateofbirth = $_POST['year'] .$_POST['month'].$_POST['date'];
             $gender = $_POST['gender'];
+
+            
 
             try {
                 // insert query
@@ -102,12 +104,12 @@
                    
                     <select name="month">
                         <option selected>Month</option>
-                        <option>
+                        
                         <?php
                         for ($month = 1; $month <= 12; $month++)
                             echo "<option value = '" . $month . "'>" . $month . "</option>";
                         ?>
-                        </option>
+                        
                     </select>
                 </tr>
                 <tr>
@@ -137,10 +139,7 @@
 
             $username = $_POST['username'];
 
-            if (empty($username)) {
-                echo '<span style="color:#FF0000;"> please enter username</span>';
-                
-            } elseif (strrpos($_POST["username"], ' ') ) {
+            if (strrpos($_POST["username"], ' ') ) {
                 echo '<span style="color:#FF0000;">no spacing please!</span>';
             } elseif (strlen($username) < 6) {
                 echo '<span style="color:#FF0000;">please only enter 6 characters!</span>';
