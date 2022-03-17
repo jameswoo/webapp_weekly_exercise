@@ -31,10 +31,14 @@
 
 
             if (!empty($username) && !empty($firstname) && !empty($lastname) && !empty($gender) && !empty($email) && !empty($password) && !empty($confirmpassword)) {
-                if ($password == $confirmpassword) {
-                    //[0-9A-Za-z!@#$%] = 0-9, A-Z (big/small)
+
+                if ($_POST["password"] === $_POST["confirm_password"]){
+            
+                    //[0-9A-Za-z!@#$%] = 0-9, A-Z,a-z
                     if (preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{6,12}$/', $password)) {
+                        
                         if (preg_match('/^((?:\s*[A-Za-z]\s*){6,})$/', $username)) {
+
                             if (date('Y') - $_POST['year'] >= 18) {
 
                                 try {
@@ -77,10 +81,10 @@
                                     die('ERROR: ' . $exception->getMessage());
                                 }
                             } else {
-                                echo "<div class='alert alert-danger'>You're Underaged! (At Least 18)</div>";
+                                echo "<div class='alert alert-danger'>Customer must be above 18 years old</div>";
                             }
                         } else {
-                            echo "<div class='alert alert-danger'>username must have no space, minimum 6 characters</div>";
+                            echo "<div class='alert alert-danger'>username must not contain space with minimum 6 characters</div>";
                         }
                     } else {
                         echo "<div class='alert alert-danger'>the password minimum 6 characters, must contain at least a number, a capital letter and a small letter</div>";
