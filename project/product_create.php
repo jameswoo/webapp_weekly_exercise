@@ -20,56 +20,65 @@
         <?php
         //if submit button pressed only do these
         if ($_POST) {
-            if (!empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['price'])) {
-
-                if (ctype_alpha($_POST['name'])) {
-
-                    if (is_numeric($_POST['price'])) {
 
 
-                        // include database connection
-                        include 'database/connection.php';
-                        // posted values
-                        $name = $_POST['name'];
-                        $description = $_POST['description'];
-                        $price = $_POST['price'];
-                        try {
-                            // insert query
-                            $query = "INSERT INTO products SET 
+
+
+            if (is_numeric($_POST['price'])) {
+
+
+                // include database connection
+                include 'database/connection.php';
+
+
+                // posted values
+                $name = $_POST['name'];
+                $description = $_POST['description'];
+                $price = $_POST['price'];
+                try {
+                    // insert query
+                    $query = "INSERT INTO products SET 
                 name=:name, 
                 description=:description, 
                 price=:price,
                 created=:created";
-                            // prepare query for execution
-                            $stmt = $con->prepare($query);
-                            // bind the parameters
-                            $stmt->bindParam(':name', $name);
-                            $stmt->bindParam(':description', $description);
-                            $stmt->bindParam(':price', $price);
-                            // specify when this record was inserted to the database
-                            date_default_timezone_set("Asia/Kuala_Lumpur");
-                            $created = date('Y-m-d H:i:s');
-                            $stmt->bindParam(':created', $created);
-                            // Execute the query
-                            if ($stmt->execute()) {
-                                echo "<div class='alert alert-success'>Record was saved.</div>";
-                            } else {
-                                echo "<div class='alert alert-danger'>Unable to save record.</div>";
-                            }
-                        }
-                        // show error
-                        catch (PDOException $exception) {
-                            die('ERROR: ' . $exception->getMessage());
-                        }
+                    // prepare query for execution
+                    $stmt = $con->prepare($query);
+                    // bind the parameters
+                    $stmt->bindParam(':name', $name);
+                    $stmt->bindParam(':description', $description);
+                    $stmt->bindParam(':price', $price);
+                    // specify when this record was inserted to the database
+                    date_default_timezone_set("Asia/Kuala_Lumpur");
+                    $created = date('Y-m-d H:i:s');
+                    $stmt->bindParam(':created', $created);
+                    // Execute the query
+                    if ($stmt->execute()) {
+                        echo "<div class='alert alert-success'>Record was saved.</div>";
                     } else {
-                        echo "<div class='alert alert-danger'>only number in price</div>";
+                        echo "<div class='alert alert-danger'>Unable to save record.</div>";
                     }
-                } else {
-                    echo "<div class='alert alert-danger'>only letters in name</div>";
+                }
+                // show error
+                catch (PDOException $exception) {
+                    die('ERROR: ' . $exception->getMessage());
                 }
             } else {
-                echo "<div class='alert alert-danger'>do not leave empty</div>";
+                echo "<div class='alert alert-danger'>Please fill in name, description and price.</div>";
             }
+        }
+        ?>
+
+
+        <?php
+        if (!empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['price'])) {
+            echo "<div class='alert alert-danger'>Please only key in number in price</div>";
+        }
+        ?>
+
+        <?php
+        if (ctype_alpha($_POST['name'])) {
+            echo "<div class='alert alert-danger'>Please only key in letters in name</div>";
         }
         ?>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
