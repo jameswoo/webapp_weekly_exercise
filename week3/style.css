@@ -5,5 +5,10 @@
     padding: 4px;
     border: 2px solid #000;
     color: #000;
+}
 
+html, body {
+    max-width: 100%;
+    background-color: bisque;
+    overflow: hidden;
 }
