@@ -23,7 +23,7 @@ function findCirclePerimeter($radius)
 </head>
 
 <body>
-    <div class="row justify-content-center">
+    <div class="row container-fluid justify-content-center">
         <div class="col-sm-12 col-md-8 col-lg-4 mt-5">
             <div class="shadow-lg p-3 mb-5 bg-white rounded text-secondary">
                 <form action="formCalculateAreaPerimeter.php" method="post">

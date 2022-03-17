@@ -7,8 +7,6 @@
     color: #000;
 }
 
-html, body {
-    max-width: 100%;
-    background-color: bisque;
+body {
     overflow: hidden;
-}
+    }

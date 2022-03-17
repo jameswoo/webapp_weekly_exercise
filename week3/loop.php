@@ -9,7 +9,7 @@
 
 <body>
     <div class="row justify-content-center">
-        <div class="col-sm-12 col-md-8 col-lg-4 mt-5">
+        <div class="col-sm-12 col-lg-4 mt-5">
             <div class="shadow p-5 bg-warning rounded text-secondary">
 
                 <div class=" d-flex aligns-items-center justify-content-center">
