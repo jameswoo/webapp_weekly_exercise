@@ -8,7 +8,7 @@
     <title>PDO - Create a Record - PHP CRUD Tutorial</title>
     <!-- Latest compiled and minified Bootstrap CSS (Apply your Bootstrap here -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
 </head>
 
 <body>
@@ -20,39 +20,55 @@
         <?php
         //if submit button pressed only do these
         if ($_POST) {
-            // include database connection
-            include 'database/connection.php';
-            // posted values
-            $name = $_POST['name'];
-            $description = $_POST['description'];
-            $price = $_POST['price'];
-            try {
-                // insert query
-                $query = "INSERT INTO products SET 
+            if (!empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST['price'])) {
+
+                if (ctype_alpha($_POST['name'])) {
+
+                    if (is_numeric($_POST['price'])) {
+
+
+                        // include database connection
+                        include 'database/connection.php';
+                        // posted values
+                        $name = $_POST['name'];
+                        $description = $_POST['description'];
+                        $price = $_POST['price'];
+                        try {
+                            // insert query
+                            $query = "INSERT INTO products SET 
                 name=:name, 
                 description=:description, 
                 price=:price,
                 created=:created";
-                // prepare query for execution
-                $stmt = $con->prepare($query);
-                // bind the parameters
-                $stmt->bindParam(':name', $name);
-                $stmt->bindParam(':description', $description);
-                $stmt->bindParam(':price', $price);
-                // specify when this record was inserted to the database
-                date_default_timezone_set("Asia/Kuala_Lumpur");
-                $created = date('Y-m-d H:i:s');
-                $stmt->bindParam(':created', $created);
-                // Execute the query
-                if ($stmt->execute()) {
-                    echo "<div class='alert alert-success'>Record was saved.</div>";
+                            // prepare query for execution
+                            $stmt = $con->prepare($query);
+                            // bind the parameters
+                            $stmt->bindParam(':name', $name);
+                            $stmt->bindParam(':description', $description);
+                            $stmt->bindParam(':price', $price);
+                            // specify when this record was inserted to the database
+                            date_default_timezone_set("Asia/Kuala_Lumpur");
+                            $created = date('Y-m-d H:i:s');
+                            $stmt->bindParam(':created', $created);
+                            // Execute the query
+                            if ($stmt->execute()) {
+                                echo "<div class='alert alert-success'>Record was saved.</div>";
+                            } else {
+                                echo "<div class='alert alert-danger'>Unable to save record.</div>";
+                            }
+                        }
+                        // show error
+                        catch (PDOException $exception) {
+                            die('ERROR: ' . $exception->getMessage());
+                        }
+                    } else {
+                        echo "<div class='alert alert-danger'>only number in price</div>";
+                    }
                 } else {
-                    echo "<div class='alert alert-danger'>Unable to save record.</div>";
+                    echo "<div class='alert alert-danger'>only letters in name</div>";
                 }
-            }
-            // show error
-            catch (PDOException $exception) {
-                die('ERROR: ' . $exception->getMessage());
+            } else {
+                echo "<div class='alert alert-danger'>do not leave empty</div>";
             }
         }
         ?>

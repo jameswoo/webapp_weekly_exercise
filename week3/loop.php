@@ -8,7 +8,7 @@
 <title>Q3 loop</title>
 
 <body>
-    <div class="row justify-content-center">
+    <div class="row container-fluid justify-content-center">
         <div class="col-sm-12 col-lg-4 mt-5">
             <div class="shadow p-5 bg-warning rounded text-secondary">
 
