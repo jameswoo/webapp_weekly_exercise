@@ -35,10 +35,12 @@
 
 
             if (empty($username) || empty($firstname) || empty($lastname) || empty($gender) || empty($email) || empty($password) || empty($confirmpassword)) {
+                $error = $error . "<div class='alert alert-danger'>Please fill in all the information</div>";
             } else {
                 if (!preg_match('/^((?:\s*[A-Za-z]\s*){6,})$/', $username)) {
 
                     if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z]{6,}$/', $password)) {
+
                     } else if ($password  != $confirmpassword) {
 
                         if ($age <= 18) {
@@ -94,8 +96,7 @@
                     $error = $error . "<div class='alert alert-danger'>Password must be minimum 6 characters, contain at least a number, a capital letter and a small letter</div>";
                 }
                 $error = $error . "<div class='alert alert-danger'>Username must not contain space with minimum 6 characters</div>";
-
-                $error = $error . "<div class='alert alert-danger'>Please fill in all the information</div>";
+                
             }
 
 
