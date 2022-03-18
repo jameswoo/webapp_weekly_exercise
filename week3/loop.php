@@ -44,7 +44,7 @@
                             <!--month-->
                             <div class="w-20 p-2">
                                 <p class="fw-bold text-secondary">
-                                    <label for="day">Month:</label>
+                                    <label for="month">Month:</label>
                                 </p>
                                 <select name='month' class="form-control" id="month">
 
@@ -66,7 +66,7 @@
                             <!--year-->
                             <div class="w-20 p-2">
                                 <p class="fw-bold text-secondary">
-                                    <label for="day">Year:</label>
+                                    <label for="year">Year:</label>
                                 </p>
                                 <select name='year' class="form-control" id="year">
 
