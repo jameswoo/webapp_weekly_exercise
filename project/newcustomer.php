@@ -32,12 +32,14 @@
 
             if (!empty($username) && !empty($firstname) && !empty($lastname) && !empty($gender) && !empty($email) && !empty($password) && !empty($confirmpassword)) {
 
-                if ($_POST["password"] === $_POST["confirm_password"]){
-            
-                    //[0-9A-Za-z!@#$%] = 0-9, A-Z,a-z
-                    if (preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{6,12}$/', $password)) {
-                        
-                        if (preg_match('/^((?:\s*[A-Za-z]\s*){6,})$/', $username)) {
+                //A-Z,a-z,more than 6
+                if (preg_match('/^((?:\s*[A-Za-z]\s*){6,})$/', $username)) {
+
+
+                    //0-9, A-Z,a-z,more than 6 word
+                    if (preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{6,}$/', $password)) {
+
+                        if ($_POST["password"] == $_POST["confirm_password"]) {
 
                             if (date('Y') - $_POST['year'] >= 18) {
 
@@ -84,16 +86,16 @@
                                 echo "<div class='alert alert-danger'>Customer must be above 18 years old</div>";
                             }
                         } else {
-                            echo "<div class='alert alert-danger'>username must not contain space with minimum 6 characters</div>";
+                            echo "<div class='alert alert-danger'>Password and confirm password does not match.</div>";
                         }
                     } else {
-                        echo "<div class='alert alert-danger'>the password minimum 6 characters, must contain at least a number, a capital letter and a small letter</div>";
+                        echo "<div class='alert alert-danger'>Password must be minimum 6 characters, contain at least a number, a capital letter and a small letter</div>";
                     }
                 } else {
-                    echo "<div class='alert alert-danger'>Password does not match.</div>";
+                    echo "<div class='alert alert-danger'>Username must not contain space with minimum 6 characters</div>";
                 }
             } else {
-                echo "<div class='alert alert-danger'>Do not leave empty</div>";
+                echo "<div class='alert alert-danger'>Please fill in all the information</div>";
             }
         }
 
@@ -108,6 +110,19 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Password</td>
+                    <td><input type='text' name='password' class='form-control' pattern="(?=.*\d)(?=.*][a-z)(?=.*[A-Z]).{6,}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Confirm Password</td>
+                    <td><input type='text' name='confirmpassword' class='form-control' pattern="$_POST['password']" /></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type='text' name='email' class='form-control' /></td>
+                </tr>
+                <tr>
                     <td>First Name</td>
                     <td><input type='text' name='firstname' class='form-control' /></td>
                 </tr>
@@ -116,7 +131,7 @@
                     <td><input type='text' name='lastname' class='form-control' /></td>
                 </tr>
                 <tr>
-                    <td>Date of birth</td>
+                    <td>Date of Birth</td>
                     <td>
                         <div class="<d-inline-flex p-2">
                             <label for="sel1">Day:</label>
@@ -183,20 +198,6 @@
 
 
                     </td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td><input type='text' name='email' class='form-control' /></td>
-                </tr>
-
-                <tr>
-                    <td>Password</td>
-                    <td><input type='text' name='password' class='form-control' pattern="(?=.*\d)(?=.*][a-z)(?=.*[A-Z]).{6,}" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Confirm Password</td>
-                    <td><input type='text' name='confirmpassword' class='form-control' pattern="$_POST['password']"/></td>
                 </tr>
 
                 <tr>
