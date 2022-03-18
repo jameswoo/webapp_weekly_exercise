@@ -131,71 +131,89 @@
                     <td><input type='text' name='lastname' class='form-control' /></td>
                 </tr>
                 <tr>
-                    <td>Date of Birth</td>
-                    <td>
-                        <div class="<d-inline-flex p-2">
-                            <label for="sel1">Day:</label>
-                            <select name='day' class="form-control" id="sel1">
+                    
+                    <div class="<d-flex flex-row mb-3">
+                        <td>Date of Birth</td>
+                        <td>
+                            <div class="w-25 p-2">
+                                <label for="day">Day:</label>
+                                <select name='day' class="form-control" id="day">
+                                <option selected>--- Choose day ---</option>
 
-                                <?php
-                                for ($day = 1; $day <= 31; $day++) {
-                                    echo "<option>";
-                                    echo $day;
-                                    echo "</option>";
-                                }
-                                ?>
-                        </div>
-                        </select>
+                                    <?php
+                                    for ($day = 1; $day <= 31; $day++) {
 
-                        <div class="d-inline-flex p-2">
-                            <label for="sel2 ">Month: </label>
-                            <select name='month' class="form-control" id="sel1">
-                                <?php
-                                $month = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+                                        echo "<option>";
+                                        echo $day;
+                                        echo "</option>";
+                                    }
+                                    ?>
 
-                                for ($x = 0; $x < 12; $x++) {
-                                    echo "<option>";
-                                    echo $month[$x] . "<br>";
-                                    echo "</option>";
-                                }
-                                ?>
-                        </div>
-                        </select>
-                        <div class="d-inline-flex p-2">
-                            <label for="sel3">Year:</label>
-                            <select name='year' class="form-control" id="sel1">
-                                <?php
-                                for ($year = 1990; $year <= date("Y"); $year++) {
-                                    echo "<option>";
-                                    echo $year;
-                                    echo "</option>";
-                                }
-                                ?>
-                            </select>
-                        </div>
-                    </td>
+                                </select>
+                            </div>
+
+                            <div class="w-25 p-2">
+                                <label for="month ">Month: </label>
+                                <select name='month' class="form-control" id="month">
+                                <option selected>--- Choose month ---</option>
+                                    <?php
+                                    $month = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+
+                                    for ($x = 0; $x < 12; $x++) {
+                                        
+                                        echo "<option>";
+                                        echo $month[$x];
+                                        echo "</option>";
+                                    }
+                                    ?>
+
+                                </select>
+                            </div>
+
+                            <div class="w-25 p-2">
+                                <label for="year">Year:</label>
+                                <select name='year' class="form-control" id="year">
+                                <option selected>--- Choose year ---</option>
+                                    <?php
+
+                                    for ($year = 1990; $year <= date("Y"); $year++) {
+                                        echo "<option>";
+                                        echo $year;
+                                        echo "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+
+                        </td>
+                    </div>
                 </tr>
-                </td>
 
                 </tr>
                 <tr>
                     <td>Gender</td>
                     <td>
-                        <input class="form-check-input" type="radio" value="male" name="gender">
-                        <label class="from-check-label" for="inlineRadio1">
-                            Male
-                        </label>
 
-                        <input class="form-check-input" type="radio" value="female" name="gender">
-                        <label class="from-check-label" for="inlineRadio2">
-                            Female
-                        </label>
+                        <div class="pe-1">
+                            <input class="form-check-input" type="radio" value="male" name="gender">
+                            <label class="from-check-label" for="Radio1">
+                                Male
+                            </label>
+                        </div>
 
-                        <input class="form-check-input" type="radio" value="other" name="gender">
-                        <label class="from-check-label" for="inlineRadio3">
-                            Other
-                        </label>
+                        <div class="pe-1">
+                            <input class="form-check-input" type="radio" value="female" name="gender">
+                            <label class="from-check-label" for="Radio2">
+                                Female
+                            </label>
+                        </div>
 
+                        <div class="pe-1">
+                            <input class="form-check-input" type="radio" value="other" name="gender">
+                            <label class="from-check-label" for="Radio3">
+                                Other
+                            </label>
+                        </div>
 
                     </td>
                 </tr>
