@@ -22,13 +22,14 @@
             include 'database/connection.php';
             // posted values
             $username = $_POST['username'];
-            $firstname = $_POST['firstname'];
-            $lastname = $_POST['lastname'];
-            $gender = $_POST['gender'];
-            $email = $_POST['email'];
             $password = $_POST['password'];
             $confirmpassword = $_POST['confirmpassword'];
+            $email = $_POST['email'];
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
             $dob = $_POST['year'] . "-" . $_POST['month'] . "-" . $_POST['day'];
+            $gender = $_POST['gender'];
+
             $age = (int)date('Y') - (int)$_POST['year'];
             $error = "";
 
@@ -56,12 +57,15 @@
                     // insert query
                     $query = "INSERT INTO newcustomer SET 
                     username =:username, 
+                    password = :password,
+                    confirmpassword = :confirmpassword,
+                    email =:email,
                     firstname =:firstname, 
                     lastname =:lastname, 
                     dob =:dob,
                     gender =:gender,
-                    email =:email,
-                    password = :password";
+                    created=:created";
+
 
                     // prepare query for execution
                     $stmt = $con->prepare($query);
