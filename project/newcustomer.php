@@ -38,27 +38,20 @@
                 $error = $error . "<div class='alert alert-danger'>Please fill in all the information</div>";
             } else {
                 if (!preg_match('/^((?:\s*[A-Za-z]\s*){6,})$/', $username)) {
-                    $error = $error . "<div class='alert alert-danger'>Username must not contain space with minimum 6 characters</div>";
-                }
 
-                if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z]{6,}$/', $password)) {
-                    $error = $error . "<div class='alert alert-danger'>Password must be minimum 6 characters, contain at least a number, a capital letter and a small letter</div>";
-                } else if ($password  != $confirmpassword) {
-                    $error = $error . "<div class='alert alert-danger'>Password and confirm password does not match.</div>";
-                }
 
-                if ($age <= 18) {
-                    $error = $error . "<div class='alert alert-danger'>Customer must be above 18 years old</div>";
-                }
-            }
+                    if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z]{6,}$/', $password)) {
+                    } else if ($password  != $confirmpassword) {
+                        if ($age <= 18) {
+                        }
 
-            if ($error = "") {
-                try {
-                    // insert query
-                    $query = "INSERT INTO newcustomer SET 
+
+                        try {
+                            // insert query
+                            $query = "INSERT INTO newcustomer SET 
                     username =:username, 
-                    password = :password,
-                    confirmpassword = :confirmpassword,
+                    password =:password,
+                    confirmpassword =:confirmpassword,
                     email =:email,
                     firstname =:firstname, 
                     lastname =:lastname, 
@@ -67,35 +60,44 @@
                     created=:created";
 
 
-                    // prepare query for execution
-                    $stmt = $con->prepare($query);
+                            // prepare query for execution
+                            $stmt = $con->prepare($query);
 
-                    // bind the parameters
-                    $stmt->bindParam(':username', $username);
-                    $stmt->bindParam(':password', $password);
-                    $stmt->bindParam(':confirmpassword', $confirmpassword);
-                    $stmt->bindParam(':email', $email);
-                    $stmt->bindParam(':firstname', $firstname);
-                    $stmt->bindParam(':lastname', $lastname);
-                    $stmt->bindParam(':dob', $dob);
-                    $stmt->bindParam(':gender', $gender);
+                            // bind the parameters
+                            $stmt->bindParam(':username', $username);
+                            $stmt->bindParam(':password', $password);
+                            $stmt->bindParam(':confirmpassword', $confirmpassword);
+                            $stmt->bindParam(':email', $email);
+                            $stmt->bindParam(':firstname', $firstname);
+                            $stmt->bindParam(':lastname', $lastname);
+                            $stmt->bindParam(':dob', $dob);
+                            $stmt->bindParam(':gender', $gender);
 
 
-                    // specify when this record was inserted to the database
-                    //date_default_timezone_set("Asia/Kuala_Lumpur");
-                    //$dob = date('Y-m-d');
-                    // Execute the query
-                    if ($stmt->execute()) {
-                        echo "<div class='alert alert-success'>Record was saved.</div>";
-                    } else {
-                        echo "<div class='alert alert-danger'>Unable to save record.</div>";
+                            // specify when this record was inserted to the database
+                            //date_default_timezone_set("Asia/Kuala_Lumpur");
+                            //$dob = date('Y-m-d');
+                            // Execute the query
+                            if ($stmt->execute()) {
+                                echo "<div class='alert alert-success'>Record was saved.</div>";
+                            } else {
+                                echo "<div class='alert alert-danger'>Unable to save record.</div>";
+                            }
+                        }
+                        // show error
+                        catch (PDOException $exception) {
+                            die('ERROR: ' . $exception->getMessage());
+                        }
+                        $error = $error . "<div class='alert alert-danger'>Username must not contain space with minimum 6 characters</div>";
                     }
+
+                    $error = $error . "<div class='alert alert-danger'>Password must be minimum 6 characters, contain at least a number, a capital letter and a small letter</div>";
+
+                    $error = $error . "<div class='alert alert-danger'>Password and confirm password does not match.</div>";
                 }
-                // show error
-                catch (PDOException $exception) {
-                    die('ERROR: ' . $exception->getMessage());
-                }
+                $error = $error . "<div class='alert alert-danger'>Customer must be above 18 years old</div>";
             }
+
 
             echo $error;
         }
