@@ -10,61 +10,85 @@
 <body>
     <div class="row container-fluid justify-content-center">
         <div class="col-sm-12 col-lg-4 mt-5">
-            <div class="shadow p-5 bg-warning rounded text-secondary">
+            <div class="shadow p-5 border border-secondary border-4 rounded text-secondary">
 
                 <div class=" d-flex aligns-items-center justify-content-center">
-                    <!--day-->
-
-                    <?php
-                    $selected_day = date('d'); //current day
-
-                    echo '<select id="day" name="day">' . "\n";
-                    for ($i_day = 1; $i_day <= 31; $i_day++) {
-                        $selected = ($selected_day == $i_day ? ' selected' : '');
-                        echo '<option value="' . $i_day . '"' . $selected . '>' . $i_day . '</option>' . "\n";
-                    }
-                    ?>
 
 
-                    <ul class="dropdown-menu">
-                        <?php
-                        echo '</select>' . "\n";
-                        ?>
-                    </ul>
-                    </button>
+                    <form>
+                        <!--day-->
+
+                        <!--default select, -->
+                        <div class="dropdown w-100">
+
+                            <div class="w-20 p-2">
+                                <p class="fw-bold text-secondary">
+                                    <label for="day">Day:</label>
+                                </p>
+                                <select name='day' class="form-control" id="day">
+
+                                    <?php
+                                    $selected_day = date('d');
+
+                                    for ($i_day = 1; $i_day <= 31; $i_day++) {
+                                        $selected = ($selected_day == $i_day ? ' selected' : '');
+
+                                        echo '<option value="' . $i_day . '"' . $selected . '>' . $i_day . '</option>' . "\n";
+                                    }
+                                    ?>
 
 
-                    <!--month-->
+                                </select>
+                            </div>
 
-                    <?php
-                    $selected_month = date('m'); //current month
+                            <!--month-->
+                            <div class="w-20 p-2">
+                                <p class="fw-bold text-secondary">
+                                    <label for="day">Month:</label>
+                                </p>
+                                <select name='month' class="form-control" id="month">
 
-                    echo '<select id="month" name="month">' . "\n";
-                    for ($i_month = 1; $i_month <= 12; $i_month++) {
-                        $selected = ($selected_month == $i_month ? ' selected' : '');
-                        echo '<option value="' . $i_month . '"' . $selected . '>' . date('F', mktime(0, 0, 0, $i_month)) . '</option>' . "\n";
-                    }
-                    echo '</select>' . "\n";
-                    ?>
+                                    <?php
+                                    $selected_month = date('m');
 
-
-                    <!--year-->
-
-                    <?php
-                    $year_start  = 2022;
-                    $year_end = date('Y'); // current Year
-                    $user_selected_year = 2022;
-
-                    echo '<select id="year" name="year">' . "\n";
-                    for ($i_year = $year_start; $i_year >= 2010; $i_year--) {
-                        $selected = ($user_selected_year == $i_year ? ' selected' : '');
-
-                        echo '<option value="' . $i_year . '"' . $selected . '>' . $i_year . '</option>' . "\n";
-                    }
-                    echo '</select>' . "\n";
-                    ?>
+                                    for ($i_month = 1; $i_month <= 12; $i_month++) {
+                                        $selected = ($selected_month == $i_month ? ' selected' : '');
+                                        echo '<option value="' . $i_month . '"' . $selected . '>' . date('F', mktime(0, 0, 0, $i_month)) . '</option>' . "\n";
+                                    }
+                                    ?>
 
 
+                                </select>
+                            </div>
+
+
+
+                            <!--year-->
+                            <div class="w-20 p-2">
+                                <p class="fw-bold text-secondary">
+                                    <label for="day">Year:</label>
+                                </p>
+                                <select name='year' class="form-control" id="year">
+
+                                    <?php
+                                    $year_start  = 2022;
+                                    $year_end = date('Y'); // current Year
+                                    $user_selected_year = 2022;
+
+                                    for ($i_year = $year_start; $i_year >= 2010; $i_year--) {
+                                        $selected = ($user_selected_year == $i_year ? ' selected' : '');
+
+                                        echo '<option value="' . $i_year . '"' . $selected . '>' . $i_year . '</option>' . "\n";
+                                    }
+                                    ?>
+
+
+                                </select>
+                            </div>
+
+
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
