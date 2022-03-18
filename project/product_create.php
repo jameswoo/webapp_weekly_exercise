@@ -30,7 +30,7 @@
                         // include database connection
                         include 'database/connection.php';
 
-                        
+
                         // posted values
                         $name = $_POST['name'];
                         $description = $_POST['description'];

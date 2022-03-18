@@ -29,7 +29,7 @@
             $password = $_POST['password'];
             $confirmpassword = $_POST['confirmpassword'];
             $dob = $_POST['year'] . "-" . $_POST['month'] . "-" . $_POST['day'];
-            $age = date('Y') - $_POST['year'];
+            $age = (int)date('Y') - (int)$_POST['year'];
             $error = "";
 
 
@@ -54,7 +54,7 @@
             if ($error = "") {
                 try {
                     // insert query
-                    $query = "INSERT INTO customer SET 
+                    $query = "INSERT INTO newcustomer SET 
                     username =:username, 
                     firstname =:firstname, 
                     lastname =:lastname, 
